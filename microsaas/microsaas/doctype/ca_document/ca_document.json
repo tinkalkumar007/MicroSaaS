@@ -1,0 +1,293 @@
+{
+    "actions": [],
+    "autoname": "format:DOC-{#####}",
+    "creation": "2026-01-12 01:48:00",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "client_section",
+        "client",
+        "client_name",
+        "column_break_client",
+        "document_name",
+        "document_type",
+        "file_section",
+        "file_attachment",
+        "file_size",
+        "column_break_file",
+        "file_type",
+        "uploaded_by",
+        "upload_date",
+        "access_control_section",
+        "visibility",
+        "column_break_access",
+        "client_accessible",
+        "compliance_section",
+        "expiry_date",
+        "renewal_reminder",
+        "column_break_compliance",
+        "requires_signature",
+        "signature_status",
+        "signed_date",
+        "metadata_section",
+        "tags",
+        "description",
+        "version_section",
+        "version_number",
+        "previous_version"
+    ],
+    "fields": [
+        {
+            "fieldname": "client_section",
+            "fieldtype": "Section Break",
+            "label": "Client Information"
+        },
+        {
+            "fieldname": "firm",
+            "fieldtype": "Link",
+            "label": "CA Firm",
+            "options": "CA Firm",
+            "reqd": 1,
+            "read_only": 1
+        },
+        {
+            "fieldname": "client",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Client",
+            "options": "CA Client",
+            "reqd": 1
+        },
+        {
+            "fetch_from": "client.client_name",
+            "fieldname": "client_name",
+            "fieldtype": "Data",
+            "label": "Client Name",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_client",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "document_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Document Name",
+            "reqd": 1
+        },
+        {
+            "fieldname": "document_type",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Document Type",
+            "options": "Tax Return\nFinancial Statement\nContract\nAgreement\nCompliance Certificate\nAudit Report\nGST Filing\nITR\nOther",
+            "reqd": 1
+        },
+        {
+            "fieldname": "file_section",
+            "fieldtype": "Section Break",
+            "label": "File Details"
+        },
+        {
+            "fieldname": "file_attachment",
+            "fieldtype": "Attach",
+            "label": "File Attachment",
+            "reqd": 1
+        },
+        {
+            "fieldname": "file_size",
+            "fieldtype": "Data",
+            "label": "File Size",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_file",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "file_type",
+            "fieldtype": "Data",
+            "label": "File Type",
+            "read_only": 1
+        },
+        {
+            "fieldname": "uploaded_by",
+            "fieldtype": "Link",
+            "label": "Uploaded By",
+            "options": "User",
+            "read_only": 1
+        },
+        {
+            "default": "Today",
+            "fieldname": "upload_date",
+            "fieldtype": "Date",
+            "label": "Upload Date",
+            "read_only": 1
+        },
+        {
+            "fieldname": "access_control_section",
+            "fieldtype": "Section Break",
+            "label": "Access Control"
+        },
+        {
+            "default": "CA Only",
+            "fieldname": "visibility",
+            "fieldtype": "Select",
+            "label": "Visibility",
+            "options": "CA Only\nClient Accessible",
+            "reqd": 1
+        },
+        {
+            "fieldname": "column_break_access",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "0",
+            "fieldname": "client_accessible",
+            "fieldtype": "Check",
+            "label": "Client Accessible"
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "compliance_section",
+            "fieldtype": "Section Break",
+            "label": "Compliance"
+        },
+        {
+            "fieldname": "expiry_date",
+            "fieldtype": "Date",
+            "label": "Expiry Date"
+        },
+        {
+            "default": "0",
+            "depends_on": "expiry_date",
+            "fieldname": "renewal_reminder",
+            "fieldtype": "Check",
+            "label": "Send Renewal Reminder"
+        },
+        {
+            "fieldname": "column_break_compliance",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "0",
+            "fieldname": "requires_signature",
+            "fieldtype": "Check",
+            "label": "Requires Signature"
+        },
+        {
+            "depends_on": "requires_signature",
+            "fieldname": "signature_status",
+            "fieldtype": "Select",
+            "label": "Signature Status",
+            "options": "Pending\nSigned\nRejected"
+        },
+        {
+            "depends_on": "requires_signature",
+            "fieldname": "signed_date",
+            "fieldtype": "Date",
+            "label": "Signed Date",
+            "read_only": 1
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "metadata_section",
+            "fieldtype": "Section Break",
+            "label": "Metadata"
+        },
+        {
+            "fieldname": "tags",
+            "fieldtype": "Data",
+            "label": "Tags"
+        },
+        {
+            "fieldname": "description",
+            "fieldtype": "Text Editor",
+            "label": "Description"
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "version_section",
+            "fieldtype": "Section Break",
+            "label": "Version Control"
+        },
+        {
+            "default": "1",
+            "fieldname": "version_number",
+            "fieldtype": "Int",
+            "label": "Version Number",
+            "read_only": 1
+        },
+        {
+            "fieldname": "previous_version",
+            "fieldtype": "Link",
+            "label": "Previous Version",
+            "options": "CA Document",
+            "read_only": 1
+        }
+    ],
+    "links": [],
+    "modified": "2026-01-12 01:48:00",
+    "modified_by": "Administrator",
+    "module": "MicroSaaS",
+    "name": "CA Document",
+    "naming_rule": "Expression",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "CA Firm Admin",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 0,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "CA Staff",
+            "share": 0,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 0,
+            "email": 1,
+            "export": 0,
+            "print": 1,
+            "read": 1,
+            "report": 0,
+            "role": "CA Client User",
+            "share": 0,
+            "write": 0
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

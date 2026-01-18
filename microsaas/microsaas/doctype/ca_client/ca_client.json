@@ -1,0 +1,243 @@
+{
+    "actions": [],
+    "allow_rename": 1,
+    "autoname": "format:CLI-{#####}",
+    "creation": "2026-01-11 23:47:00",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "basic_information_section",
+        "client_name",
+        "email",
+        "phone",
+        "whatsapp_number",
+        "column_break_basic",
+        "status",
+        "assigned_ca",
+        "portal_access_enabled",
+        "business_details_section",
+        "company_name",
+        "gst_number",
+        "pan_number",
+        "column_break_business",
+        "business_type",
+        "industry",
+        "service_configuration_section",
+        "service_type",
+        "client_category",
+        "column_break_service",
+        "priority_level",
+        "whatsapp_integration_section",
+        "whatsapp_instance",
+        "section_break_notes",
+        "notes"
+    ],
+    "fields": [
+        {
+            "fieldname": "basic_information_section",
+            "fieldtype": "Section Break",
+            "label": "Basic Information"
+        },
+        {
+            "fieldname": "firm",
+            "fieldtype": "Link",
+            "label": "CA Firm",
+            "options": "CA Firm",
+            "reqd": 1,
+            "in_standard_filter": 1
+        },
+        {
+            "fieldname": "client_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Client Name",
+            "reqd": 1
+        },
+        {
+            "fieldname": "email",
+            "fieldtype": "Data",
+            "label": "Email",
+            "options": "Email",
+            "reqd": 1,
+            "unique": 1
+        },
+        {
+            "fieldname": "phone",
+            "fieldtype": "Data",
+            "label": "Phone",
+            "options": "Phone"
+        },
+        {
+            "fieldname": "whatsapp_number",
+            "fieldtype": "Data",
+            "label": "WhatsApp Number",
+            "options": "Phone"
+        },
+        {
+            "fieldname": "column_break_basic",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Status",
+            "options": "Active\nInactive\nPending",
+            "default": "Active",
+            "reqd": 1
+        },
+        {
+            "fieldname": "assigned_ca",
+            "fieldtype": "Link",
+            "label": "Assigned CA",
+            "options": "User"
+        },
+        {
+            "fieldname": "portal_access_enabled",
+            "fieldtype": "Check",
+            "label": "Portal Access Enabled",
+            "default": "1"
+        },
+        {
+            "fieldname": "business_details_section",
+            "fieldtype": "Section Break",
+            "label": "Business Details"
+        },
+        {
+            "fieldname": "company_name",
+            "fieldtype": "Data",
+            "label": "Company Name"
+        },
+        {
+            "fieldname": "gst_number",
+            "fieldtype": "Data",
+            "label": "GST Number"
+        },
+        {
+            "fieldname": "pan_number",
+            "fieldtype": "Data",
+            "label": "PAN Number"
+        },
+        {
+            "fieldname": "column_break_business",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "business_type",
+            "fieldtype": "Select",
+            "label": "Business Type",
+            "options": "\nSole Proprietorship\nPartnership\nLLP\nPrivate Limited\nPublic Limited\nOther"
+        },
+        {
+            "fieldname": "industry",
+            "fieldtype": "Data",
+            "label": "Industry"
+        },
+        {
+            "fieldname": "service_configuration_section",
+            "fieldtype": "Section Break",
+            "label": "Service Configuration"
+        },
+        {
+            "fieldname": "service_type",
+            "fieldtype": "Select",
+            "label": "Service Type",
+            "options": "\nTax Filing\nAudit\nConsulting\nBookkeeping\nGST Services\nCompany Registration\nOther",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "client_category",
+            "fieldtype": "Select",
+            "label": "Client Category",
+            "options": "\nIndividual\nSmall Business\nMedium Business\nLarge Enterprise"
+        },
+        {
+            "fieldname": "column_break_service",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "priority_level",
+            "fieldtype": "Select",
+            "label": "Priority Level",
+            "options": "\nLow\nMedium\nHigh\nCritical",
+            "default": "Medium"
+        },
+        {
+            "fieldname": "whatsapp_integration_section",
+            "fieldtype": "Section Break",
+            "label": "WhatsApp Integration"
+        },
+        {
+            "fieldname": "whatsapp_instance",
+            "fieldtype": "Link",
+            "label": "WhatsApp Instance",
+            "options": "WhatsApp Instance",
+            "description": "Optional: Link to specific WhatsApp instance for this client"
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Text Editor",
+            "label": "Notes"
+        }
+    ],
+    "links": [],
+    "modified": "2026-01-11 23:47:00",
+    "modified_by": "Administrator",
+    "module": "MicroSaaS",
+    "name": "CA Client",
+    "naming_rule": "Expression",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "CA Firm Admin",
+            "share": 1,
+            "write": 1,
+            "submit": 1,
+            "cancel": 1,
+            "amend": 1
+        },
+        {
+            "create": 1,
+            "delete": 0,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "CA Staff",
+            "share": 0,
+            "write": 1,
+            "submit": 0
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

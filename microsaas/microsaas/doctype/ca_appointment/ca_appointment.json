@@ -1,0 +1,256 @@
+{
+    "actions": [],
+    "autoname": "format:APT-{#####}",
+    "creation": "2026-01-12 01:47:00",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "client_section",
+        "client",
+        "client_name",
+        "column_break_client",
+        "assigned_ca",
+        "ca_name",
+        "schedule_section",
+        "appointment_date",
+        "appointment_time",
+        "duration",
+        "column_break_schedule",
+        "timezone",
+        "meeting_type",
+        "status",
+        "details_section",
+        "purpose",
+        "notes",
+        "agenda",
+        "integration_section",
+        "video_call_link",
+        "location",
+        "reminders_section",
+        "send_reminder",
+        "reminder_time"
+    ],
+    "fields": [
+        {
+            "fieldname": "client_section",
+            "fieldtype": "Section Break",
+            "label": "Client Information"
+        },
+        {
+            "fieldname": "firm",
+            "fieldtype": "Link",
+            "label": "CA Firm",
+            "options": "CA Firm",
+            "reqd": 1,
+            "read_only": 1
+        },
+        {
+            "fieldname": "client",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Client",
+            "options": "CA Client",
+            "reqd": 1
+        },
+        {
+            "fetch_from": "client.client_name",
+            "fieldname": "client_name",
+            "fieldtype": "Data",
+            "label": "Client Name",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_client",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "assigned_ca",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Assigned CA",
+            "options": "User",
+            "reqd": 1
+        },
+        {
+            "fetch_from": "assigned_ca.full_name",
+            "fieldname": "ca_name",
+            "fieldtype": "Data",
+            "label": "CA Name",
+            "read_only": 1
+        },
+        {
+            "fieldname": "schedule_section",
+            "fieldtype": "Section Break",
+            "label": "Schedule"
+        },
+        {
+            "fieldname": "appointment_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "Appointment Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "appointment_time",
+            "fieldtype": "Time",
+            "in_list_view": 1,
+            "label": "Appointment Time",
+            "reqd": 1
+        },
+        {
+            "default": "60",
+            "fieldname": "duration",
+            "fieldtype": "Int",
+            "label": "Duration (minutes)"
+        },
+        {
+            "fieldname": "column_break_schedule",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "Asia/Kolkata",
+            "fieldname": "timezone",
+            "fieldtype": "Select",
+            "label": "Timezone",
+            "options": "Asia/Kolkata\nAsia/Dubai\nAmerica/New_York\nEurope/London"
+        },
+        {
+            "fieldname": "meeting_type",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Meeting Type",
+            "options": "In-Person\nVideo Call\nPhone Call",
+            "reqd": 1
+        },
+        {
+            "default": "Scheduled",
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Status",
+            "options": "Scheduled\nCompleted\nCancelled\nRescheduled",
+            "reqd": 1
+        },
+        {
+            "fieldname": "details_section",
+            "fieldtype": "Section Break",
+            "label": "Details"
+        },
+        {
+            "fieldname": "purpose",
+            "fieldtype": "Data",
+            "label": "Purpose"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Text Editor",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "agenda",
+            "fieldtype": "Small Text",
+            "label": "Agenda"
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "integration_section",
+            "fieldtype": "Section Break",
+            "label": "Integration"
+        },
+        {
+            "depends_on": "eval:doc.meeting_type=='Video Call'",
+            "fieldname": "video_call_link",
+            "fieldtype": "Data",
+            "label": "Video Call Link"
+        },
+        {
+            "depends_on": "eval:doc.meeting_type=='In-Person'",
+            "fieldname": "location",
+            "fieldtype": "Small Text",
+            "label": "Location"
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "reminders_section",
+            "fieldtype": "Section Break",
+            "label": "Reminders"
+        },
+        {
+            "default": "1",
+            "fieldname": "send_reminder",
+            "fieldtype": "Check",
+            "label": "Send Reminder"
+        },
+        {
+            "default": "24",
+            "depends_on": "send_reminder",
+            "fieldname": "reminder_time",
+            "fieldtype": "Select",
+            "label": "Reminder Time (hours before)",
+            "options": "1\n2\n4\n8\n12\n24\n48"
+        }
+    ],
+    "links": [],
+    "modified": "2026-01-12 01:47:00",
+    "modified_by": "Administrator",
+    "module": "MicroSaaS",
+    "name": "CA Appointment",
+    "naming_rule": "Expression",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "CA Firm Admin",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 0,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "CA Staff",
+            "share": 0,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 0,
+            "email": 1,
+            "export": 0,
+            "print": 1,
+            "read": 1,
+            "report": 0,
+            "role": "CA Client User",
+            "share": 0,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

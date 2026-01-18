@@ -1,0 +1,129 @@
+{
+    "actions": [],
+    "autoname": "field:template_name",
+    "creation": "2026-01-11 23:52:00",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "template_name",
+        "template_type",
+        "channel",
+        "column_break_basic",
+        "is_active",
+        "template_content_section",
+        "template_content",
+        "variables_section",
+        "available_variables",
+        "preview_section",
+        "preview_data",
+        "preview_output"
+    ],
+    "fields": [
+        {
+            "fieldname": "template_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Template Name",
+            "reqd": 1,
+            "unique": 1
+        },
+        {
+            "fieldname": "template_type",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Template Type",
+            "options": "invoice_sent\npayment_reminder\npayment_overdue\npayment_received\nappointment_reminder\ntax_deadline\ndocument_expiry\nwelcome_message",
+            "reqd": 1
+        },
+        {
+            "default": "WhatsApp",
+            "fieldname": "channel",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Channel",
+            "options": "WhatsApp\nEmail\nSMS",
+            "reqd": 1
+        },
+        {
+            "fieldname": "column_break_basic",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "1",
+            "fieldname": "is_active",
+            "fieldtype": "Check",
+            "in_list_view": 1,
+            "label": "Is Active"
+        },
+        {
+            "fieldname": "template_content_section",
+            "fieldtype": "Section Break",
+            "label": "Template Content"
+        },
+        {
+            "description": "Use Jinja2 syntax for variables, e.g., {{client_name}}, {{invoice_number}}",
+            "fieldname": "template_content",
+            "fieldtype": "Text Editor",
+            "label": "Template Content",
+            "reqd": 1
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "variables_section",
+            "fieldtype": "Section Break",
+            "label": "Available Variables"
+        },
+        {
+            "default": "client_name, invoice_number, amount, due_date, portal_link, payment_date, transaction_id, appointment_date, appointment_time, ca_name, days_overdue",
+            "fieldname": "available_variables",
+            "fieldtype": "Small Text",
+            "label": "Available Variables",
+            "read_only": 1
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "preview_section",
+            "fieldtype": "Section Break",
+            "label": "Preview"
+        },
+        {
+            "description": "Enter JSON data to preview template rendering",
+            "fieldname": "preview_data",
+            "fieldtype": "Code",
+            "label": "Preview Data",
+            "options": "JSON"
+        },
+        {
+            "fieldname": "preview_output",
+            "fieldtype": "Text Editor",
+            "label": "Preview Output",
+            "read_only": 1
+        }
+    ],
+    "links": [],
+    "modified": "2026-01-11 23:52:00",
+    "modified_by": "Administrator",
+    "module": "MicroSaaS",
+    "name": "Notification Template",
+    "naming_rule": "By fieldname",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

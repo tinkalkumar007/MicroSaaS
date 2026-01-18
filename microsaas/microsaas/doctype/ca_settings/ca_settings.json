@@ -1,0 +1,314 @@
+{
+    "actions": [],
+    "creation": "2026-01-11 23:51:00",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "company_information_section",
+        "ca_firm_name",
+        "address",
+        "column_break_company",
+        "contact_email",
+        "contact_phone",
+        "logo",
+        "whatsapp_integration_section",
+        "enable_whatsapp_notifications",
+        "whatsapp_instance",
+        "column_break_whatsapp",
+        "whatsapp_instance_status",
+        "payment_gateway_section",
+        "default_payment_gateway",
+        "column_break_gateway",
+        "enable_razorpay",
+        "razorpay_key_id",
+        "razorpay_key_secret",
+        "razorpay_webhook_secret",
+        "section_break_stripe",
+        "enable_stripe",
+        "stripe_api_key",
+        "stripe_webhook_secret",
+        "invoice_configuration_section",
+        "invoice_number_series",
+        "default_tax_rate",
+        "column_break_invoice",
+        "default_payment_terms",
+        "default_currency",
+        "notification_preferences_section",
+        "enable_email_notifications",
+        "enable_sms_notifications",
+        "column_break_notifications",
+        "send_invoice_on_creation",
+        "send_payment_confirmation",
+        "portal_settings_section",
+        "enable_client_portal",
+        "portal_url",
+        "column_break_portal",
+        "portal_welcome_message",
+        "business_hours_section",
+        "timezone",
+        "working_hours"
+    ],
+    "fields": [
+        {
+            "fieldname": "company_information_section",
+            "fieldtype": "Section Break",
+            "label": "Company Information"
+        },
+        {
+            "fieldname": "ca_firm_name",
+            "fieldtype": "Data",
+            "label": "CA Firm Name",
+            "reqd": 1
+        },
+        {
+            "fieldname": "address",
+            "fieldtype": "Small Text",
+            "label": "Address"
+        },
+        {
+            "fieldname": "column_break_company",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "contact_email",
+            "fieldtype": "Data",
+            "label": "Contact Email",
+            "options": "Email"
+        },
+        {
+            "fieldname": "contact_phone",
+            "fieldtype": "Data",
+            "label": "Contact Phone",
+            "options": "Phone"
+        },
+        {
+            "fieldname": "logo",
+            "fieldtype": "Attach Image",
+            "label": "Logo"
+        },
+        {
+            "fieldname": "whatsapp_integration_section",
+            "fieldtype": "Section Break",
+            "label": "WhatsApp Integration"
+        },
+        {
+            "default": "1",
+            "fieldname": "enable_whatsapp_notifications",
+            "fieldtype": "Check",
+            "label": "Enable WhatsApp Notifications"
+        },
+        {
+            "fieldname": "whatsapp_instance",
+            "fieldtype": "Link",
+            "label": "WhatsApp Instance",
+            "options": "WhatsApp Instance",
+            "description": "Select the WhatsApp instance from whatsapp_saas app"
+        },
+        {
+            "fieldname": "column_break_whatsapp",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "whatsapp_instance_status",
+            "fieldtype": "Data",
+            "label": "Instance Status",
+            "read_only": 1
+        },
+        {
+            "fieldname": "payment_gateway_section",
+            "fieldtype": "Section Break",
+            "label": "Payment Gateway Configuration"
+        },
+        {
+            "default": "Razorpay",
+            "fieldname": "default_payment_gateway",
+            "fieldtype": "Select",
+            "label": "Default Payment Gateway",
+            "options": "Razorpay\nStripe\nPayPal"
+        },
+        {
+            "fieldname": "column_break_gateway",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "0",
+            "fieldname": "enable_razorpay",
+            "fieldtype": "Check",
+            "label": "Enable Razorpay"
+        },
+        {
+            "depends_on": "enable_razorpay",
+            "fieldname": "razorpay_key_id",
+            "fieldtype": "Data",
+            "label": "Razorpay Key ID"
+        },
+        {
+            "depends_on": "enable_razorpay",
+            "fieldname": "razorpay_key_secret",
+            "fieldtype": "Password",
+            "label": "Razorpay Key Secret"
+        },
+        {
+            "depends_on": "enable_razorpay",
+            "fieldname": "razorpay_webhook_secret",
+            "fieldtype": "Password",
+            "label": "Razorpay Webhook Secret"
+        },
+        {
+            "fieldname": "section_break_stripe",
+            "fieldtype": "Section Break"
+        },
+        {
+            "default": "0",
+            "fieldname": "enable_stripe",
+            "fieldtype": "Check",
+            "label": "Enable Stripe"
+        },
+        {
+            "depends_on": "enable_stripe",
+            "fieldname": "stripe_api_key",
+            "fieldtype": "Password",
+            "label": "Stripe API Key"
+        },
+        {
+            "depends_on": "enable_stripe",
+            "fieldname": "stripe_webhook_secret",
+            "fieldtype": "Password",
+            "label": "Stripe Webhook Secret"
+        },
+        {
+            "fieldname": "invoice_configuration_section",
+            "fieldtype": "Section Break",
+            "label": "Invoice Configuration"
+        },
+        {
+            "default": "INV-.#####",
+            "fieldname": "invoice_number_series",
+            "fieldtype": "Data",
+            "label": "Invoice Number Series"
+        },
+        {
+            "default": "18",
+            "fieldname": "default_tax_rate",
+            "fieldtype": "Percent",
+            "label": "Default Tax Rate (%)"
+        },
+        {
+            "fieldname": "column_break_invoice",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "Net 30",
+            "fieldname": "default_payment_terms",
+            "fieldtype": "Select",
+            "label": "Default Payment Terms",
+            "options": "Due on Receipt\nNet 15\nNet 30\nNet 45\nNet 60"
+        },
+        {
+            "default": "INR",
+            "fieldname": "default_currency",
+            "fieldtype": "Link",
+            "label": "Default Currency",
+            "options": "Currency"
+        },
+        {
+            "fieldname": "notification_preferences_section",
+            "fieldtype": "Section Break",
+            "label": "Notification Preferences"
+        },
+        {
+            "default": "1",
+            "fieldname": "enable_email_notifications",
+            "fieldtype": "Check",
+            "label": "Enable Email Notifications"
+        },
+        {
+            "default": "0",
+            "fieldname": "enable_sms_notifications",
+            "fieldtype": "Check",
+            "label": "Enable SMS Notifications"
+        },
+        {
+            "fieldname": "column_break_notifications",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "1",
+            "fieldname": "send_invoice_on_creation",
+            "fieldtype": "Check",
+            "label": "Send Invoice on Creation"
+        },
+        {
+            "default": "1",
+            "fieldname": "send_payment_confirmation",
+            "fieldtype": "Check",
+            "label": "Send Payment Confirmation"
+        },
+        {
+            "fieldname": "portal_settings_section",
+            "fieldtype": "Section Break",
+            "label": "Portal Settings"
+        },
+        {
+            "default": "1",
+            "fieldname": "enable_client_portal",
+            "fieldtype": "Check",
+            "label": "Enable Client Portal"
+        },
+        {
+            "fieldname": "portal_url",
+            "fieldtype": "Data",
+            "label": "Portal URL"
+        },
+        {
+            "fieldname": "column_break_portal",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "portal_welcome_message",
+            "fieldtype": "Text Editor",
+            "label": "Portal Welcome Message"
+        },
+        {
+            "fieldname": "business_hours_section",
+            "fieldtype": "Section Break",
+            "label": "Business Hours"
+        },
+        {
+            "default": "Asia/Kolkata",
+            "fieldname": "timezone",
+            "fieldtype": "Select",
+            "label": "Timezone",
+            "options": "Asia/Kolkata\nAsia/Dubai\nAmerica/New_York\nEurope/London\nAustralia/Sydney"
+        },
+        {
+            "default": "Monday - Friday, 9:00 AM - 6:00 PM",
+            "fieldname": "working_hours",
+            "fieldtype": "Data",
+            "label": "Working Hours"
+        }
+    ],
+    "issingle": 1,
+    "links": [],
+    "modified": "2026-01-11 23:51:00",
+    "modified_by": "Administrator",
+    "module": "MicroSaaS",
+    "name": "CA Settings",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "print": 1,
+            "read": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

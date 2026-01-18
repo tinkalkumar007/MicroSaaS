@@ -1,0 +1,329 @@
+{
+    "actions": [],
+    "allow_rename": 1,
+    "autoname": "format:INV-{#####}",
+    "creation": "2026-01-11 23:48:00",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "client_section",
+        "client",
+        "client_name",
+        "client_email",
+        "column_break_client",
+        "invoice_date",
+        "due_date",
+        "status",
+        "items_section",
+        "items",
+        "totals_section",
+        "subtotal",
+        "tax_rate",
+        "column_break_totals",
+        "tax_amount",
+        "total_amount",
+        "currency",
+        "recurring_billing_section",
+        "is_recurring",
+        "frequency",
+        "column_break_recurring",
+        "next_generation_date",
+        "end_date",
+        "payment_section",
+        "payment_status",
+        "payment_terms",
+        "column_break_payment",
+        "payment_gateway_reference",
+        "portal_link",
+        "notifications_section",
+        "auto_send_on_creation",
+        "reminder_schedule",
+        "section_break_notes",
+        "notes"
+    ],
+    "fields": [
+        {
+            "fieldname": "client_section",
+            "fieldtype": "Section Break",
+            "label": "Client Information"
+        },
+        {
+            "fieldname": "firm",
+            "fieldtype": "Link",
+            "label": "CA Firm",
+            "options": "CA Firm",
+            "reqd": 1,
+            "read_only": 1
+        },
+        {
+            "fieldname": "client",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Client",
+            "options": "CA Client",
+            "reqd": 1
+        },
+        {
+            "fetch_from": "client.client_name",
+            "fieldname": "client_name",
+            "fieldtype": "Data",
+            "label": "Client Name",
+            "read_only": 1
+        },
+        {
+            "fetch_from": "client.email",
+            "fieldname": "client_email",
+            "fieldtype": "Data",
+            "label": "Client Email",
+            "read_only": 1
+        },
+        {
+            "fieldname": "column_break_client",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "Today",
+            "fieldname": "invoice_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "Invoice Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "due_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "Due Date",
+            "reqd": 1
+        },
+        {
+            "default": "Unpaid",
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "in_standard_filter": 1,
+            "label": "Payment Status",
+            "options": "Unpaid\nPartially Paid\nPaid\nOverdue\nCancelled",
+            "reqd": 1
+        },
+        {
+            "fieldname": "items_section",
+            "fieldtype": "Section Break",
+            "label": "Invoice Items"
+        },
+        {
+            "fieldname": "items",
+            "fieldtype": "Table",
+            "label": "Items",
+            "options": "CA Invoice Item",
+            "reqd": 1
+        },
+        {
+            "fieldname": "totals_section",
+            "fieldtype": "Section Break",
+            "label": "Totals"
+        },
+        {
+            "fieldname": "subtotal",
+            "fieldtype": "Currency",
+            "label": "Subtotal",
+            "read_only": 1
+        },
+        {
+            "default": "18",
+            "fieldname": "tax_rate",
+            "fieldtype": "Percent",
+            "label": "Tax Rate (%)"
+        },
+        {
+            "fieldname": "column_break_totals",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "tax_amount",
+            "fieldtype": "Currency",
+            "label": "Tax Amount",
+            "read_only": 1
+        },
+        {
+            "fieldname": "total_amount",
+            "fieldtype": "Currency",
+            "in_list_view": 1,
+            "label": "Total Amount",
+            "read_only": 1
+        },
+        {
+            "default": "INR",
+            "fieldname": "currency",
+            "fieldtype": "Link",
+            "label": "Currency",
+            "options": "Currency"
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "recurring_billing_section",
+            "fieldtype": "Section Break",
+            "label": "Recurring Billing"
+        },
+        {
+            "default": "0",
+            "fieldname": "is_recurring",
+            "fieldtype": "Check",
+            "label": "Is Recurring"
+        },
+        {
+            "depends_on": "is_recurring",
+            "fieldname": "frequency",
+            "fieldtype": "Select",
+            "label": "Frequency",
+            "options": "\nMonthly\nQuarterly\nHalf-Yearly\nAnnual"
+        },
+        {
+            "fieldname": "column_break_recurring",
+            "fieldtype": "Column Break"
+        },
+        {
+            "depends_on": "is_recurring",
+            "fieldname": "next_generation_date",
+            "fieldtype": "Date",
+            "label": "Next Generation Date"
+        },
+        {
+            "depends_on": "is_recurring",
+            "fieldname": "end_date",
+            "fieldtype": "Date",
+            "label": "End Date"
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "payment_section",
+            "fieldtype": "Section Break",
+            "label": "Payment Details"
+        },
+        {
+            "fieldname": "payment_status",
+            "fieldtype": "Data",
+            "hidden": 1,
+            "label": "Payment Status"
+        },
+        {
+            "default": "Net 30",
+            "fieldname": "payment_terms",
+            "fieldtype": "Select",
+            "label": "Payment Terms",
+            "options": "Due on Receipt\nNet 15\nNet 30\nNet 45\nNet 60"
+        },
+        {
+            "fieldname": "column_break_payment",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "payment_gateway_reference",
+            "fieldtype": "Data",
+            "label": "Payment Gateway Reference",
+            "read_only": 1
+        },
+        {
+            "fieldname": "portal_link",
+            "fieldtype": "Data",
+            "label": "Portal Link",
+            "read_only": 1
+        },
+        {
+            "collapsible": 1,
+            "fieldname": "notifications_section",
+            "fieldtype": "Section Break",
+            "label": "Notifications"
+        },
+        {
+            "default": "1",
+            "fieldname": "auto_send_on_creation",
+            "fieldtype": "Check",
+            "label": "Auto Send on Creation"
+        },
+        {
+            "default": "3 days before due date, On due date, 3 days after due date",
+            "fieldname": "reminder_schedule",
+            "fieldtype": "Small Text",
+            "label": "Reminder Schedule"
+        },
+        {
+            "fieldname": "section_break_notes",
+            "fieldtype": "Section Break",
+            "label": "Notes"
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Text Editor",
+            "label": "Notes"
+        }
+    ],
+    "links": [],
+    "modified": "2026-01-11 23:48:00",
+    "modified_by": "Administrator",
+    "module": "MicroSaaS",
+    "name": "CA Invoice",
+    "naming_rule": "Expression",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "CA Firm Admin",
+            "share": 1,
+            "write": 1,
+            "submit": 1,
+            "cancel": 1,
+            "amend": 1
+        },
+        {
+            "create": 1,
+            "delete": 0,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "CA Staff",
+            "share": 0,
+            "write": 1,
+            "submit": 1,
+            "cancel": 0,
+            "amend": 1
+        },
+        {
+            "create": 0,
+            "delete": 0,
+            "email": 1,
+            "export": 0,
+            "print": 1,
+            "read": 1,
+            "report": 0,
+            "role": "CA Client User",
+            "share": 0,
+            "write": 0
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

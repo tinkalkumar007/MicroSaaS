@@ -148,23 +148,21 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"microsaas.tasks.all"
-# 	],
-# 	"daily": [
-# 		"microsaas.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"microsaas.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"microsaas.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"microsaas.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"daily": [
+		"microsaas.microsaas.services.reminder_scheduler.send_invoice_reminders",
+		"microsaas.microsaas.services.reminder_scheduler.check_tax_deadlines",
+		"microsaas.microsaas.services.reminder_scheduler.check_document_expiry"
+	],
+	"hourly": [
+		"microsaas.microsaas.services.reminder_scheduler.send_appointment_reminders"
+	],
+	"cron": {
+		"0 9 * * *": [  # 9 AM daily
+			"microsaas.microsaas.services.reminder_scheduler.generate_recurring_invoices"
+		]
+	}
+}
 
 # Testing
 # -------
@@ -173,10 +171,19 @@ app_license = "mit"
 
 # Overriding Methods
 # ------------------------------
-#
-# override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "microsaas.event.get_events"
-# }
+
+override_whitelisted_methods = {
+	# Payment Gateway Webhooks
+	"microsaas.razorpay_webhook": "microsaas.microsaas.integrations.payment_gateway.razorpay_gateway.webhook",
+	"microsaas.stripe_webhook": "microsaas.microsaas.integrations.payment_gateway.stripe_gateway.webhook",
+	
+	# Payment API
+	"microsaas.create_payment_link": "microsaas.microsaas.api.payment_api.create_payment_link",
+	"microsaas.get_invoice_payment_status": "microsaas.microsaas.api.payment_api.get_invoice_payment_status",
+	"microsaas.process_manual_payment": "microsaas.microsaas.api.payment_api.process_manual_payment",
+	"microsaas.refund_payment": "microsaas.microsaas.api.payment_api.refund_payment",
+}
+
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
